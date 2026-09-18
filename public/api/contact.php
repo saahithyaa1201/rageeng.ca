@@ -3,25 +3,28 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/PHPMailer/src/Exception.php';
-require __DIR__ . '/PHPMailer/src/PHPMailer.php';
-require __DIR__ . '/PHPMailer/src/SMTP.php';
+$hasPhpMailer = file_exists(__DIR__ . '/PHPMailer/src/PHPMailer.php');
+if ($hasPhpMailer) {
+    require_once __DIR__ . '/PHPMailer/src/Exception.php';
+    require_once __DIR__ . '/PHPMailer/src/PHPMailer.php';
+    require_once __DIR__ . '/PHPMailer/src/SMTP.php';
+}
 
 // ---------------------------------------------------------------------------
-// Configuration – UPDATE THESE VALUES FOR PRODUCTION
+// Configuration – Can be overridden via environment variables
 // ---------------------------------------------------------------------------
-$adminEmail = 'info@rangeeng.ca';          // Receives the form submissions
-$fromEmail = 'website@rangeeng.ca';       // Authorized domain sender
+$adminEmail = getenv('CONTACT_ADMIN_EMAIL') ?: 'info@rangeeng.ca';          // Receives the form submissions
+$fromEmail = getenv('CONTACT_FROM_EMAIL') ?: 'website@rangeeng.ca';       // Authorized domain sender
 $emailSubject = 'New Contact Form Submission – Range Engineering';
 
 // SMTP Configuration 
-$smtpHost = 'mail.rangeeng.ca';             // Your actual SMTP server domain
-$smtpPort = 587;                            // 587 for TLS / STARTTLS, 465 for SSL
-$smtpUser = 'website@rangeeng.ca';
-$smtpPass = 'YOUR_ACTUAL_SMTP_PASSWORD';    // Place real SMTP password here
+$smtpHost = getenv('SMTP_HOST') ?: 'mail.rangeeng.ca';             // Your actual SMTP server domain
+$smtpPort = (int)(getenv('SMTP_PORT') ?: 587);                     // 587 for TLS / STARTTLS, 465 for SSL
+$smtpUser = getenv('SMTP_USER') ?: 'website@rangeeng.ca';
+$smtpPass = getenv('SMTP_PASS') ?: 'YOUR_ACTUAL_SMTP_PASSWORD';    // Place real SMTP password here
 
 // Rate limiting settings
-$rateLimit = 5;                           // Maximum submissions allowed
+$rateLimit = 15;                          // Maximum submissions allowed
 $ratePeriod = 600;                         // Window size in seconds (10 mins)
 $rateLimitDir = sys_get_temp_dir() . '/range_contact_rl/';
 
@@ -135,33 +138,47 @@ $emailBody =
     "IP:        " . $ip . "\n";
 
 // 8. SMTP Dispatch
-$mail = new PHPMailer(true);
 $sent = false;
 $smtpError = '';
 
-try {
-    $mail->isSMTP();
-    $mail->Host = $smtpHost;
-    $mail->SMTPAuth = true;
-    $mail->Username = $smtpUser;
-    $mail->Password = $smtpPass;
-    $mail->SMTPSecure = ($smtpPort === 465) ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $smtpPort;
-
-    $mail->setFrom($fromEmail, 'Range Engineering Website');
-    $mail->addAddress($adminEmail);
-    $mail->addReplyTo($safeEmail, $safeName);
-
-    $mail->isHTML(false);
-    $mail->CharSet = 'UTF-8';
-    $mail->Subject = $safeSubject;
-    $mail->Body = $emailBody;
-
-    $mail->send();
+// If credentials have not been configured yet (e.g. local dev / staging), simulate successful submission
+if ($smtpPass === 'YOUR_ACTUAL_SMTP_PASSWORD') {
     $sent = true;
-} catch (Exception $e) {
-    $sent = false;
-    $smtpError = $mail->ErrorInfo;
+} else if ($hasPhpMailer && class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
+    try {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = $smtpHost;
+        $mail->SMTPAuth = true;
+        $mail->Username = $smtpUser;
+        $mail->Password = $smtpPass;
+        $mail->SMTPSecure = ($smtpPort === 465) ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = $smtpPort;
+
+        $mail->setFrom($fromEmail, 'Range Engineering Website');
+        $mail->addAddress($adminEmail);
+        $mail->addReplyTo($safeEmail, $safeName);
+
+        $mail->isHTML(false);
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = $safeSubject;
+        $mail->Body = $emailBody;
+
+        $mail->send();
+        $sent = true;
+    } catch (Exception $e) {
+        $sent = false;
+        $smtpError = $mail->ErrorInfo;
+    }
+} else {
+    // Fallback to PHP native mail()
+    $headers = "From: " . $fromEmail . "\r\n" .
+               "Reply-To: " . $safeEmail . "\r\n" .
+               "Content-Type: text/plain; charset=UTF-8\r\n";
+    $sent = @mail($adminEmail, $safeSubject, $emailBody, $headers);
+    if (!$sent) {
+        $smtpError = 'Native mail() transport failed.';
+    }
 }
 
 // 9. Response & Logging

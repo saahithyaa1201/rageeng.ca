@@ -85,13 +85,13 @@ export function PageHero({
       {...(image ? { style: { backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" } } : {})}
     >
       {image && <div className="absolute inset-0 z-0 bg-black/45" />}
-      <div className={cn("container-page flex min-h-[420px] items-start justify-start pt-36 md:pt-44 pb-20 md:pb-28 relative z-10", image && "*:text-surface")}>
+      <div className="container-page flex min-h-[420px] items-start justify-start pt-36 md:pt-44 pb-20 md:pb-28 relative z-10">
         <div className="max-w-3xl text-left">
-          <p className={cn("eyebrow", image && "text-primary-foreground/90")}>{eyebrow}</p>
-          <h1 className={cn("mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] md:text-6xl", image && "text-white")}>
+          <p className={cn("eyebrow", image ? "text-primary-foreground/90" : "text-muted-foreground")}>{eyebrow}</p>
+          <h1 className={cn("mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] md:text-6xl", image ? "text-white" : "text-ink")}>
             {title}
           </h1>
-          <p className={cn("mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft", image && "text-white/90")}>{description}</p>
+          <p className={cn("mt-6 max-w-2xl text-lg leading-relaxed", image ? "text-white/90" : "text-ink-soft")}>{description}</p>
         </div>
       </div>
     </section>

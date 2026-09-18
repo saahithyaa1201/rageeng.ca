@@ -2,6 +2,27 @@ import React, { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 
+export const Route = createFileRoute('/contact')({
+  head: () => ({
+    meta: [
+      { title: 'Contact Us | Range Engineering Inc.' },
+      {
+        name: 'description',
+        content:
+          'Get in touch with Range Engineering Inc. for coordinated MEP engineering designs across Ontario.',
+      },
+      { property: 'og:title', content: 'Contact Range Engineering' },
+      {
+        property: 'og:description',
+        content: 'Get in touch with Range Engineering for coordinated MEP engineering designs.',
+      },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
+  }),
+  component: ContactPage,
+});
+
 interface FormData {
   name: string;
   email: string;
@@ -11,7 +32,7 @@ interface FormData {
   website: string; // Honeypot field
 }
 
-export const Contact: React.FC = () => {
+function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -25,7 +46,8 @@ export const Contact: React.FC = () => {
   const [responseMsg, setResponseMsg] = useState<{ success: boolean; text: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,18 +90,28 @@ export const Contact: React.FC = () => {
         description="We'd love to hear from you and answer any questions."
         image="/contact.jpg"
       />
-      <section className="container-page py-20 md:py-28">
-        <div className="contact-form-container max-w-2xl mx-auto p-8 rounded-2xl border border-border bg-surface shadow-sm">
-          <h2 className="mb-6 text-3xl font-semibold">Send a Message</h2>
+      <section className="container-page py-16 md:py-24">
+        <div className="contact-form-container max-w-2xl mx-auto p-6 md:p-10 rounded-2xl border border-border bg-card shadow-card">
+          <h2 className="mb-2 text-2xl md:text-3xl font-bold text-foreground">Send a Message</h2>
+          <p className="mb-8 text-sm text-muted-foreground">
+            Fill out the details below and our team will get back to you promptly.
+          </p>
 
           {responseMsg && (
-            <div className={`mb-6 p-4 rounded-xl ${responseMsg.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+            <div
+              className={`mb-6 p-4 rounded-xl text-sm font-medium border ${
+                responseMsg.success
+                  ? 'bg-emerald-50 text-emerald-900 border-emerald-200'
+                  : 'bg-rose-50 text-rose-900 border-rose-200'
+              }`}
+            >
               {responseMsg.text}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div style={{ display: 'none' }}>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Honeypot field for bot protection */}
+            <div style={{ display: 'none' }} aria-hidden="true">
               <input
                 type="text"
                 name="website"
@@ -90,75 +122,96 @@ export const Contact: React.FC = () => {
               />
             </div>
 
-            <div className="form-group flex flex-col gap-2">
-              <label htmlFor="name" className="text-sm font-semibold">Name *</label>
+            <div className="form-group flex flex-col gap-1.5">
+              <label htmlFor="name" className="text-sm font-semibold text-foreground">
+                Name <span className="text-primary">*</span>
+              </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 maxLength={100}
                 required
+                placeholder="Your full name"
                 value={formData.name}
                 onChange={handleChange}
-                className="rounded-lg border border-border p-3 bg-surface"
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
               />
             </div>
 
-            <div className="form-group flex flex-col gap-2">
-              <label htmlFor="email" className="text-sm font-semibold">Email *</label>
+            <div className="form-group flex flex-col gap-1.5">
+              <label htmlFor="email" className="text-sm font-semibold text-foreground">
+                Email <span className="text-primary">*</span>
+              </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 maxLength={254}
                 required
+                placeholder="you@example.com"
                 value={formData.email}
                 onChange={handleChange}
-                className="rounded-lg border border-border p-3 bg-surface"
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
               />
             </div>
 
-            <div className="form-group flex flex-col gap-2">
-              <label htmlFor="phone" className="text-sm font-semibold">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                maxLength={50}
-                value={formData.phone}
-                onChange={handleChange}
-                className="rounded-lg border border-border p-3 bg-surface"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="form-group flex flex-col gap-1.5">
+                <label htmlFor="phone" className="text-sm font-semibold text-foreground">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  maxLength={50}
+                  placeholder="(416) 555-0199"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
+                />
+              </div>
+
+              <div className="form-group flex flex-col gap-1.5">
+                <label htmlFor="subject" className="text-sm font-semibold text-foreground">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  maxLength={200}
+                  placeholder="MEP Fit-out Inquiry"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
+                />
+              </div>
             </div>
 
-            <div className="form-group flex flex-col gap-2">
-              <label htmlFor="subject" className="text-sm font-semibold">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                maxLength={200}
-                value={formData.subject}
-                onChange={handleChange}
-                className="rounded-lg border border-border p-3 bg-surface"
-              />
-            </div>
-
-            <div className="form-group flex flex-col gap-2">
-              <label htmlFor="message" className="text-sm font-semibold">Message *</label>
+            <div className="form-group flex flex-col gap-1.5">
+              <label htmlFor="message" className="text-sm font-semibold text-foreground">
+                Message <span className="text-primary">*</span>
+              </label>
               <textarea
                 id="message"
                 name="message"
                 maxLength={5000}
                 rows={5}
                 required
+                placeholder="Tell us about your project, location, and timeline..."
                 value={formData.message}
                 onChange={handleChange}
-                className="rounded-lg border border-border p-3 bg-surface resize-y"
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors resize-y"
               ></textarea>
             </div>
 
-            <button type="submit" disabled={loading} className="w-full rounded-full bg-primary px-7 py-3.5 font-bold uppercase tracking-wider text-primary-foreground transition-all hover:opacity-90 disabled:opacity-50">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-xl bg-primary px-7 py-3.5 font-bold uppercase tracking-wider text-primary-foreground shadow-md transition-all hover:opacity-95 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+            >
               {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
@@ -166,10 +219,4 @@ export const Contact: React.FC = () => {
       </section>
     </SiteLayout>
   );
-};
-
-export const Route = createFileRoute('/contact')({
-  component: Contact,
-});
-
-export default Contact;
+}
