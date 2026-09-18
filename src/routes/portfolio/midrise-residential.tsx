@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/midrise-residential')({
 const MIDRISE_PROJECTS = [
   {
     id: '40-king-oshawa',
-    name: '40 King Street West, Oshawa',
+    name: '40 King Street West',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -19,7 +19,7 @@ const MIDRISE_PROJECTS = [
       'Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering Design services for a midrise residential building at 40 King Street West, Oshawa. The project focuses on efficient shared infrastructure across multiple residential floors, maximizing unit efficiency while delivering reliable and sustainable building systems.',
     details:
       'Engineering highlights include centralized mechanical room design, domestic hot water distribution, fire suppression coordination, corridor and common-area electrical systems, suite-level HVAC, and building-wide electrical distribution. Systems were designed to meet the requirements of the Ontario Building Code and applicable energy efficiency standards.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/king.jpg', '/king2.jpg', '/king3.jpg'],
   },
 ];
 
@@ -45,8 +45,8 @@ function MidriseResidentialPage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split(',')[0].trim()}

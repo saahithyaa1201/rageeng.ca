@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/office')({
 const OFFICE_PROJECTS = [
   {
     id: '233-armstrong',
-    name: '233 Armstrong Avenue, Georgetown',
+    name: '233 Armstrong Avenue',
     client: 'Private Owner',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -19,7 +19,20 @@ const OFFICE_PROJECTS = [
       'Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering Design for an office fit-out at 233 Armstrong Avenue, Georgetown, Ontario. The project involved transforming an existing space into a modern, functional work environment with fully coordinated building systems.',
     details:
       'Engineering scope included zonal HVAC design for open-plan and private office areas, energy-efficient LED lighting with daylight and occupancy controls, power distribution for workstations and IT infrastructure, washroom plumbing, and fire alarm integration. The design was optimized for occupant comfort, energy performance, and operational simplicity.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: [
+      '/233 Armstrong Ave_11 - Photo.jpg',
+      '/233 Armstrong Ave_16 - Photo.jpg',
+      '/233 Armstrong Ave_21 - Photo.jpg',
+      '/233 Armstrong Ave_22 - Photo.jpg',
+      '/233 Armstrong Ave_24 - Photo.jpg',
+      '/233 Armstrong Ave_27 - Photo.jpg',
+      '/233 Armstrong Ave_28 - Photo.jpg',
+      '/233 Armstrong Ave_36 - Photo.jpg',
+      '/233 Armstrong Ave_53 - Photo.jpg',
+      '/233 Armstrong Ave_Photo - 1.jpg',
+      '/233 Armstrong Ave_Photo - 2.jpg',
+      '/233 Armstrong Ave_Photo - 3.jpg',
+    ],
   },
 ];
 
@@ -45,8 +58,8 @@ function OfficePage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split(',')[0]?.trim() ?? project.name}

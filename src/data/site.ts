@@ -70,9 +70,9 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Industrial portfolio focused on production, utility, and facility performance.",
     highlights: [
-      "91 Sluse Road – Technical Concrete Solutions (TCS)",
-      "2183–2187 Fasan Drive, Oldcastle",
-      "15 Jack Chute Road, Killaloe",
+      "91 Sluse Road",
+      "2183–2187 Fasan Drive",
+      "15 Jack Chute Road",
     ],
     icon: "🏭",
     color: "#607d8b",
@@ -84,10 +84,10 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Residential projects spanning modern homes and larger private residences.",
     highlights: [
-      "115 Zaph Avenue, Scarborough",
-      "Ramara House (7558 Cronk Side Road)",
-      "11 Gaydon Avenue, North York",
-      "499 Rebecca St. Oakville",
+      "115 Zaph Avenue",
+      "7558 Cronk Side Road (Ramara House)",
+      "11 Gaydon Avenue",
+      "499 Rebecca St.",
     ],
     icon: "🏡",
     color: "#6b8e6b",
@@ -99,9 +99,9 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Modular housing and efficient residential systems designed for repeatable performance.",
     highlights: [
-      "83 Lincoln Avenue Townhouse Development, St. Catharines",
-      "129 Kent Street, Campbellford",
-      "1041 Willowdale Avenue, North York",
+      "83 Lincoln Avenue",
+      "129 Kent Street",
+      "1041 Willowdale Avenue",
     ],
     icon: "🧩",
     color: "#5a7fa8",
@@ -138,12 +138,12 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Multi-unit infill housing projects designed for efficient urban redevelopment.",
     highlights: [
-      "74 Amherst Road, Toronto",
-      "119 Belgravia Road, Toronto",
-      "521 Lansdowne Avenue, Toronto",
-      "376 Manning Avenue, Toronto",
-      "277 Cedarvale Road, Toronto",
-      "341 Morningside Avenue, Toronto",
+      "74 Amherst Road",
+      "119 Belgravia Road",
+      "521 Lansdowne Avenue",
+      "376 Manning Avenue",
+      "277 Cedarvale Road",
+      "341 Morningside Avenue",
     ],
     icon: "🏙️",
     color: "#26a69a",
@@ -155,9 +155,9 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Commercial and retail environments designed for flow, flexibility, and reliable service coordination.",
     highlights: [
-      "Bronte Road & Charles Cornwall Road, Oakville",
-      "3250 Argentia Road, Mississauga",
-      "171 Speers Road, Oakville",
+      "Bronte Road & Charles Cornwall Road",
+      "3250 Argentia Road",
+      "171 Speers Road",
     ],
     icon: "🏬",
     color: "#7e57c2",
@@ -169,9 +169,9 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Daycare and recreation spaces designed for health, comfort, and active daily use.",
     highlights: [
-      "Kidsville Daycare – 15 St. Albans Street, Halton Hills",
-      "Kidsville Daycare – 5637 Finch Avenue East, Scarborough",
-      "Aerosports Parks – 1120 Birchmount Road, Scarborough",
+      "15 St. Albans Street (Kidsville Daycare)",
+      "5637 Finch Avenue East (Kidsville Daycare)",
+      "1120 Birchmount Road (Aerosports Parks)",
     ],
     icon: "🎾",
     color: "#8d6748",
@@ -195,9 +195,9 @@ export const sectors: ServiceSector[] = [
     fullDesc:
       "Technical laboratory spaces requiring precise ventilation, utility coordination, and clean system planning.",
     highlights: [
-      "Merieux NutriSciences – 6665 Millcreek Drive, Unit 2, Mississauga",
-      "Merieux NutriSciences – 6660 Campobello Road, Mississauga",
-      "Merieux NutriSciences – 90 Gough Road, Units 3 & 4, Markham",
+      "6665 Millcreek Drive, Unit 2 (Merieux NutriSciences)",
+      "6660 Campobello Road (Merieux NutriSciences)",
+      "90 Gough Road, Units 3 & 4 (Merieux NutriSciences)",
     ],
     icon: "🧪",
     color: "#ef6c00",

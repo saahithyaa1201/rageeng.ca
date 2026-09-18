@@ -6,8 +6,8 @@ import { useEffect } from "react";
 // For the gallery, we can reuse some mapping or just use sectorImages from index.tsx?
 // Since we don't have sectorImages exported from data/site, we'll recreate a simple mapping
 const galleryBySector: Record<string, string[]> = {
-    industrial: ["/Constrcution pic 1.jpg", "/Construction -3.jpg", "/Construction -4.jpg"],
-    "custom-homes": ["/Building 1B.jpg", "/Ramara V1.1.jpg", "/Ramara V1.2.jpg"],
+    industrial: ["/Construction -3.jpg", "/Construction -4.jpg"],
+    "custom-homes": ["/Ramara V1.1.jpg", "/Ramara V1.2.jpg"],
     institutional: ["/233 Armstrong Ave_11 - Photo.jpg", "/233 Armstrong Ave_16 - Photo.jpg", "/233 Armstrong Ave_21 - Photo.jpg"],
     "commercial-retail": ["/233 Armstrong Ave_22 - Photo.jpg", "/233 Armstrong Ave_24 - Photo.jpg", "/233 Armstrong Ave_27 - Photo.jpg"],
     restaurants: ["/Construction -1.jpg", "/Construction -2.jpg", "/Construction -3.jpg"],

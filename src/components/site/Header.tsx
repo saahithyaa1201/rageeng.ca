@@ -1,21 +1,19 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowLeft, ArrowRight, ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { sectors } from "@/data/site";
 
 const sectorImages: Record<string, string> = {
-  "restaurants": "/Construction -1.jpg",
-  "custom-homes": "/Building 1B.jpg",
-  "modular-house": "/233 Armstrong Ave_11 - Photo.jpg",
-  "townhouse": "/233 Armstrong Ave_16 - Photo.jpg",
-  "industrial": "/Constrcution pic 1.jpg",
-  "multiplex-infill": "/233 Armstrong Ave_21 - Photo.jpg",
+  industrial: "/Jack1.png",
+  "custom-homes": "/Gay.jpg",
+  "modular-house": "/Render_260324_1.png",
+  townhouse: "/br.png",
+  "midrise-residential": "/king.jpg",
+  "multiplex-infill": "/amherst.png",
   "commercial-retail": "/Render 3.jpg",
   "daycare-recreation": "/233 Armstrong Ave_22 - Photo.jpg",
-  "office": "/233 Armstrong Ave_27 - Photo.jpg",
-  "laboratory": "/Construction -3.jpg",
-  "automotive": "/Construction -4.jpg",
-  "midrise-residential": "/Rear Elevation-1.jpg",
+  office: "/233 Armstrong Ave_Photo - 1.jpg",
+  laboratory: "/Construction -3.jpg",
 };
 
 function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
@@ -23,6 +21,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
     <Link
       to={to}
       className="text-[0.95rem] font-medium text-white/90 transition-colors hover:text-primary [&.active]:text-primary [&.active]:underline [&.active]:underline-offset-[26px] [&.active]:decoration-2 flex items-center h-full"
+      style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.9)" }}
     >
       {children}
     </Link>
@@ -38,12 +37,13 @@ function PortfolioMegaMenu() {
       <Link
         to="/portfolio/industrial"
         className={`flex h-full items-center gap-1 text-[0.95rem] font-medium transition-colors group-hover/megamenu:text-primary ${isPortfolio ? 'text-primary underline underline-offset-[26px] decoration-2' : 'text-white/90'}`}
+        style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.9)" }}
       >
         Portfolio
         <ChevronDown className="size-4" />
       </Link>
 
-      <div className="invisible absolute left-0 right-0 top-full opacity-0 shadow-2xl transition-all duration-300 group-hover/megamenu:visible group-hover/megamenu:opacity-100">
+      <div className="invisible pointer-events-none fixed left-0 right-0 top-[100px] opacity-0 shadow-2xl transition-all duration-300 z-50 group-hover/megamenu:visible group-hover/megamenu:opacity-100 group-hover/megamenu:pointer-events-auto">
         <div className="bg-white border-t-2 border-primary w-full py-12 max-h-[80vh] flex flex-col text-ink">
           <div className="container-page flex gap-12 lg:gap-20 flex-1 min-h-0 overflow-hidden">
 
@@ -107,15 +107,35 @@ function PortfolioMegaMenu() {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const router = useRouterState();
+  const isPortfolio = router.location.pathname.startsWith('/portfolio');
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-black/95 backdrop-blur shadow-sm relative">
-      <div className="container-page flex h-20 items-center justify-between gap-6 relative">
-        <Link to="/" className="flex items-center">
-          <img src="/Logo.png" alt="Range Engineering Inc." className="h-14 w-auto object-contain" />
+    <header
+      className="sticky top-0 z-50"
+      style={{
+        background: scrolled || isPortfolio ? "rgba(10, 10, 10, 0.88)" : "transparent",
+        backdropFilter: scrolled || isPortfolio ? "blur(18px) saturate(180%)" : "none",
+        WebkitBackdropFilter: scrolled || isPortfolio ? "blur(18px) saturate(180%)" : "none",
+        borderBottom: scrolled || isPortfolio ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
+        boxShadow: scrolled || isPortfolio ? "0 4px 32px rgba(0,0,0,0.35)" : "none",
+        transition: "background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease",
+      }}
+    >
+      <div className="w-full px-6 xl:px-12 flex h-[100px] items-center justify-between gap-10">
+        <Link to="/" className="flex items-center shrink-0">
+          <img src="/Logo.png" alt="Range Engineering Inc." className="h-[95px] p-2 w-auto object-contain" />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex h-full">
+        <nav className="hidden items-center gap-10 lg:flex h-full flex-1 justify-end relative">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About Us</NavLink>
           <NavLink to="/services">Services</NavLink>
@@ -124,22 +144,13 @@ export function Header() {
           <NavLink to="/contact">Contact Us</NavLink>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="hidden items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-cta transition-transform hover:-translate-y-0.5 md:inline-flex"
-          >
-            Start Project
-            <ArrowUpRight className="size-4" />
-          </Link>
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-lg border border-white/20 p-2 text-white lg:hidden"
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
-        </div>
+        <button
+          aria-label="Toggle menu"
+          onClick={() => setOpen((v) => !v)}
+          className="rounded-lg border border-white/20 p-2 text-white lg:hidden"
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
       </div>
 
       {open && (
@@ -153,14 +164,6 @@ export function Header() {
 
             <Link to="/careers" onClick={() => setOpen(false)} className="rounded-lg px-4 py-3 font-medium text-white hover:bg-white/10">Careers</Link>
             <Link to="/contact" onClick={() => setOpen(false)} className="rounded-lg px-4 py-3 font-medium text-white hover:bg-white/10">Contact Us</Link>
-
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground md:hidden"
-            >
-              Start Project
-            </Link>
           </div>
         </div>
       )}

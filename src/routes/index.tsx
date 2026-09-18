@@ -30,22 +30,22 @@ export const Route = createFileRoute("/")(
 const heroSlides = [
   {
     image: "/her.webp",
-    title: "Comfort,\nengineered in.",
+    title: "MEP Engineering\nService",
   },
   {
-    image: "/her1.webp",
+    image: "/hero2.png",
     title: "Systems,\ndesigned right.",
   },
   {
-    image: "/her2.webp",
+    image: "/hero3.png",
     title: "Vision,\nbrought to life.",
   },
   {
-    image: "/her3.webp",
+    image: "/hero4.jpg",
     title: "Built for\nbetter spaces.",
   },
   {
-    image: "/her4.webp",
+    image: "/hero5.jpg",
     title: "Performance,\nwithout compromise.",
   },
 ];
@@ -69,14 +69,14 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[85vh] lg:h-[calc(100vh-5rem)] min-h-[500px] overflow-hidden bg-black">
+    <section className="relative w-full h-screen min-h-[500px] overflow-hidden bg-black -mt-[100px]">
 
       {/* Slider Backgrounds */}
       {heroSlides.map((slide, index) => (
         <div
           key={index}
-          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-          style={{ opacity: index === currentSlide ? 1 : 0, zIndex: index === currentSlide ? 1 : 0 }}
+          className="absolute inset-0"
+          style={{ opacity: index === currentSlide ? 1 : 0, zIndex: index === currentSlide ? 1 : 0, transition: "opacity 3.5s ease-in-out" }}
         >
           <img
             src={slide.image}
@@ -85,15 +85,6 @@ function Hero() {
           />
         </div>
       ))}
-
-      {/* Top Left Badge (Full Edge) */}
-      <div className="absolute top-4 left-4 sm:top-8 sm:left-8 z-30">
-        <img
-          src="/batch.png"
-          alt="Hero Badge"
-          className="h-24 md:h-28 lg:h-36 w-auto object-contain animate-fade-in-up drop-shadow-2xl"
-        />
-      </div>
 
       {/* Content Container */}
       <div className="relative z-10 container-page h-full flex flex-col justify-center">
@@ -162,20 +153,18 @@ function Hero() {
   );
 }
 
-/* ─────────────────────────────────────────────── image map for 12 sectors */
+/* ─────────────────────────────────────────────── portfolio grid images */
 const sectorImages: Record<string, string> = {
-  "restaurants": "/Construction -1.jpg",
-  "custom-homes": "/Building 1B.jpg",
-  "modular-house": "/233 Armstrong Ave_11 - Photo.jpg",
-  "townhouse": "/233 Armstrong Ave_16 - Photo.jpg",
-  "industrial": "/Constrcution pic 1.jpg",
-  "multiplex-infill": "/233 Armstrong Ave_21 - Photo.jpg",
-  "commercial-retail": "/Render 3.jpg",
-  "daycare-recreation": "/233 Armstrong Ave_22 - Photo.jpg",
-  "office": "/233 Armstrong Ave_27 - Photo.jpg",
-  "laboratory": "/Construction -3.jpg",
-  "automotive": "/Construction -4.jpg",
-  "midrise-residential": "/Rear Elevation-1.jpg",
+  industrial: "/port (1).jpg",
+  "custom-homes": "/port (2).jpg",
+  "modular-house": "/port (3).png",
+  townhouse: "/port (4).jpg",
+  "midrise-residential": "/port (5).jpg",
+  "multiplex-infill": "/port (6).jpg",
+  "commercial-retail": "/port(7).png",
+  "daycare-recreation": "/port(8).png",
+  office: "/port(9).png",
+  laboratory: "/port(10).png",
 };
 
 /* ─────────────────────────────────────────────── SECTOR MODAL */
@@ -306,43 +295,37 @@ function WhatWeDo() {
     <>
       <section className="bg-white py-24 md:py-32 overflow-hidden">
         {/* Section header */}
-        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between container-page">
-          <div>
-            <p
-              className="font-mono text-[0.65rem] uppercase tracking-[0.3em]"
-              style={{ color: "rgba(0,0,0,0.5)" }}
-            >
-              What We Do
-            </p>
-            <h2
-              className="mt-3 text-4xl font-bold leading-[1.05] tracking-tight text-ink md:text-5xl lg:text-6xl"
-            >
-              Project Portfolio<br />
-              <span style={{ color: "#c9a84c" }}>Built for every space.</span>
-            </h2>
-          </div>
+        <div className="mb-16 flex flex-col items-center text-center container-page">
           <p
-            className="max-w-sm text-sm leading-relaxed md:text-right"
-            style={{ color: "rgba(0,0,0,0.6)" }}
+            className="font-mono text-[0.65rem] uppercase tracking-[0.3em]"
+            style={{ color: "rgba(0,0,0,0.5)" }}
           >
-            From restaurants to healthcare — we deliver coordinated MEP solutions across a wide
-            range of building types and project needs.
+            What We Do
           </p>
+          <h2
+            className="mt-3 text-4xl font-bold leading-[1.05] tracking-tight text-ink md:text-5xl lg:text-6xl"
+          >
+            Project Portfolio<br />
+            <span style={{ color: "#c9a84c" }}>Built for every space.</span>
+          </h2>
         </div>
 
         {/* ── Premium image grid (Full Width Edge-to-Edge) ── */}
-        <div className="grid w-[100vw] grid-cols-1 gap-0 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-1 gap-6 bg-white p-6 sm:grid-cols-2 lg:grid-cols-8">
           {sectors.map((sector, i) => {
             const img = sectorImages[sector.id];
             const isHovered = hoveredId === sector.id;
 
+            // Grid logic for 4-4-2 layout on large screens
+            const lgClass = i === 8 ? "lg:col-start-3 lg:col-span-2" : "lg:col-span-2";
+
             return (
               <div
                 key={sector.id}
-                className="group relative cursor-pointer overflow-hidden bg-[#121212] transition-all duration-500 border border-white/5"
+                className={`group relative cursor-pointer overflow-hidden bg-[#121212] transition-all duration-500 ${lgClass}`}
                 style={{
-                  minHeight: "420px",
-                  aspectRatio: "1 / 1.15",
+                  minHeight: "280px",
+                  aspectRatio: "1 / 1.1",
                   boxShadow: isHovered
                     ? "inset 0 0 0 1px rgba(201,168,76,0.45), 0 0 20px rgba(0,0,0,0.5)"
                     : "none",
@@ -383,48 +366,17 @@ function WhatWeDo() {
 
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-                <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
-                  <div className="flex items-start justify-between">
-                    <div
-                      className="inline-flex items-center justify-center border border-white/20 bg-black/20 px-3 py-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.28em] transition-colors"
-                      style={{ color: isHovered ? "#f0d280" : "rgba(255,255,255,0.85)" }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-
-                    <div
-                      className="h-10 w-10 border border-white/15 bg-white/5 backdrop-blur-[2px]"
-                      style={{
-                        transform: isHovered ? "rotate(0deg)" : "rotate(45deg)",
-                        transition: "transform 0.5s ease",
-                      }}
-                    />
-                  </div>
-
+                <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 pb-8">
                   <div>
-                    <div
-                      className="mb-3 inline-flex items-center gap-2 border border-white/10 bg-black/10 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] transition-colors"
-                      style={{ color: "rgba(255,255,255,0.8)" }}
-                    >
-                      Sector
-                    </div>
-
                     <h3
-                      className="text-2xl font-bold leading-tight text-white md:text-[1.6rem]"
+                      className="text-xl font-bold leading-tight text-white md:text-[1.35rem]"
                       style={{ textShadow: "0 3px 18px rgba(0,0,0,0.6)" }}
                     >
-                      {sector.name}
+                      {sector.name.split(' (')[0]}
                     </h3>
 
-                    <p
-                      className="mt-3 max-w-[28ch] text-sm leading-relaxed text-white/80 transition-opacity duration-300"
-                      style={{ opacity: isHovered ? 1 : 0.9 }}
-                    >
-                      {sector.shortDesc}
-                    </p>
-
                     <div
-                      className="mt-6 flex items-center gap-2 transition-all duration-300"
+                      className="mt-4 flex items-center gap-2 transition-all duration-300"
                       style={{
                         opacity: isHovered ? 1 : 0,
                         transform: isHovered ? "translateY(0)" : "translateY(6px)",
@@ -454,20 +406,13 @@ function WhatWeDo() {
         </div>
 
         {/* bottom CTA */}
-        <div className="mt-14 flex flex-col items-center gap-6 sm:flex-row sm:justify-between container-page">
-          <p
-            className="font-mono text-[0.65rem] text-center uppercase tracking-[0.25em] sm:text-left"
-            style={{ color: "rgba(0,0,0,0.5)" }}
-          >
-            GTA · Ottawa · Ontario
-          </p>
+        <div className="mt-14 flex justify-center container-page">
           <Link
-            to="/portfolio"
-            search={{ sector: undefined }}
+            to="/contact"
             className="inline-flex items-center gap-3 rounded-full px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-ink transition-opacity hover:opacity-80"
             style={{ border: "1px solid rgba(0,0,0,0.2)" }}
           >
-            Browse All Projects
+            Contact Us
             <ArrowRight className="size-4" />
           </Link>
         </div>
@@ -487,51 +432,49 @@ function Home() {
       <WhatWeDo />
 
       <section className="border-t border-border bg-white py-12 md:py-16">
-        <div className="container-page">
-
-          <div className="overflow-hidden border-y border-black/10 bg-black/[0.02]">
-            <div
-              className="flex w-max items-center gap-16 py-8"
-              style={{
-                animation: "franchise-scroll 22s linear infinite",
-              }}
-            >
-              {[1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((num, i) => (
-                <img
-                  key={i}
-                  src={`/f${num}.png`}
-                  alt={`Franchise ${num}`}
-                  className="h-16 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
-                />
-              ))}
-            </div>
+        <div className="mb-8 flex flex-col items-center text-center container-page">
+          <h2 className="text-3xl font-bold tracking-tight text-ink md:text-4xl">
+            Our Trusted Franchise
+          </h2>
+        </div>
+        <div className="w-full overflow-hidden">
+          {/* 4 identical sets — animate -50% to loop seamlessly with no gap */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "max-content",
+              gap: "5rem",
+              padding: "2rem 0",
+              animation: "franchise-scroll 30s linear infinite",
+              willChange: "transform",
+            }}
+          >
+            {[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((num, i) => (
+              <img
+                key={i}
+                src={`/f${num}.png`}
+                alt={`Franchise ${num}`}
+                style={{ height: "4rem", width: "auto", objectFit: "contain", flexShrink: 0 }}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface py-16 md:py-24">
-        <div className="container-page flex flex-col items-center text-center justify-between gap-8 md:flex-row md:text-left md:items-center">
-          <h2 className="max-w-xl text-3xl font-semibold md:text-4xl">
-            Have drawings ready? Let's get your systems coordinated.
-          </h2>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 rounded-full bg-primary px-9 py-5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-cta transition-transform hover:-translate-y-0.5"
-          >
-            Start Project
-            <ArrowUpRight className="size-4" />
-          </Link>
-        </div>
-      </section>
+
 
       <style>{`
         @keyframes franchise-scroll {
-          from {
+          0% {
             transform: translateX(0);
           }
-          to {
+          100% {
             transform: translateX(-50%);
           }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          @keyframes franchise-scroll { from { transform: none; } to { transform: none; } }
         }
       `}</style>
     </SiteLayout>

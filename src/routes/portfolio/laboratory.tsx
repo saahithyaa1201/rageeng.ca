@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/laboratory')({
 const LAB_PROJECTS = [
   {
     id: 'merieux-millcreek',
-    name: 'Merieux NutriSciences – 6665 Millcreek Drive, Unit 2, Mississauga',
+    name: 'Merieux NutriSciences – 6665 Millcreek Drive, Unit 2',
     client: 'Merieux NutriSciences',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -19,11 +19,11 @@ const LAB_PROJECTS = [
       'Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering Design for the Merieux NutriSciences laboratory facility at 6665 Millcreek Drive, Unit 2, Mississauga. The project involved the fit-out of a specialized food testing and analytical laboratory requiring precise environmental control and dedicated laboratory utilities.',
     details:
       'Engineering highlights include laboratory exhaust and supply air systems with HEPA filtration, chemical-resistant plumbing for lab sinks and eyewash stations, dedicated laboratory electrical panels and circuits, emergency power provisions, and specialized gas distribution systems for analytical instruments.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: 'merieux-campobello',
-    name: 'Merieux NutriSciences – 6660 Campobello Road, Mississauga',
+    name: 'Merieux NutriSciences – 6660 Campobello Road',
     client: 'Merieux NutriSciences',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -33,7 +33,7 @@ const LAB_PROJECTS = [
       "Range Engineering Inc. delivered Mechanical and Electrical Engineering Design for the second Merieux NutriSciences laboratory location at 6660 Campobello Road, Mississauga. This facility serves as an extension of the company's analytical and food safety testing operations in the Greater Toronto Area.",
     details:
       'The MEP engineering scope included laboratory-grade HVAC with precise temperature and humidity control, ducted fume hood exhaust systems, dedicated electrical services for testing equipment and refrigeration units, and chemical waste drainage systems. Systems were designed for operational continuity and compliance with laboratory accreditation requirements.',
-    gallery: ['/Ramara V1.1.jpg', '/Building 1B.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: 'merieux-gough',
@@ -47,7 +47,7 @@ const LAB_PROJECTS = [
       "Range Engineering Inc. provided full Mechanical and Electrical Engineering Design for the Merieux NutriSciences laboratory expansion at 90 Gough Road, Units 3 & 4, Markham. The multi-unit facility consolidates additional laboratory and support functions for the organization's York Region operations.",
     details:
       'Engineering services encompassed laboratory supply and exhaust ventilation, process cooling water systems, uninterruptible power supplies (UPS) for critical instruments, specialized laboratory lighting, plumbing for multiple laboratory zones, and coordination of building automation system (BAS) integration for environmental monitoring across both units.',
-    gallery: ['/Ramara V1.2.jpg', '/Building 1B.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
   },
 ];
 
@@ -73,8 +73,8 @@ function LaboratoryPage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split('–')[1]?.split(',')[0].trim() ?? project.name.split(',')[0].trim()}

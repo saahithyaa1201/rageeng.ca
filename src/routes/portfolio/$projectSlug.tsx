@@ -5,14 +5,14 @@ import { projects, sectors } from "@/data/site";
 
 const galleryBySector: Record<string, string[]> = {
   restaurants: ["/Construction -1.jpg", "/Construction -2.jpg", "/Construction -3.jpg", "/Construction -4.jpg"],
-  "custom-homes": ["/Building 1B.jpg", "/Ramara V1.1.jpg", "/Ramara V1.2.jpg", "/Rear Elevation-1.jpg"],
+  "custom-homes": ["/Ramara V1.1.jpg", "/Ramara V1.2.jpg"],
   institutional: ["/233 Armstrong Ave_11 - Photo.jpg", "/233 Armstrong Ave_16 - Photo.jpg", "/233 Armstrong Ave_21 - Photo.jpg"],
   "commercial-retail": ["/233 Armstrong Ave_22 - Photo.jpg", "/233 Armstrong Ave_24 - Photo.jpg", "/233 Armstrong Ave_27 - Photo.jpg"],
-  industrial: ["/Constrcution pic 1.jpg", "/Construction -3.jpg", "/Construction -4.jpg"],
+  industrial: ["/Construction -3.jpg", "/Construction -4.jpg"],
   healthcare: ["/233 Armstrong Ave_21 - Photo.jpg", "/233 Armstrong Ave_28 - Photo.jpg", "/233 Armstrong Ave_36 - Photo.jpg"],
   offices: ["/Render 3.jpg", "/Render_260324_1.png", "/233 Armstrong Ave_Photo - 1.jpg"],
-  worship: ["/233 Armstrong Ave_22 - Photo.jpg", "/233 Armstrong Ave_53 - Photo.jpg", "/Site Pictures.png"],
-  "premise-isolation": ["/233 Armstrong Ave_27 - Photo.jpg", "/233 Armstrong Ave_Photo - 2.jpg", "/Site Plan.png"],
+  worship: ["/233 Armstrong Ave_22 - Photo.jpg", "/233 Armstrong Ave_53 - Photo.jpg"],
+  "premise-isolation": ["/233 Armstrong Ave_27 - Photo.jpg", "/233 Armstrong Ave_Photo - 2.jpg"],
   "sports-gym": ["/Construction -3.jpg", "/Construction -4.jpg", "/Hero2.jpg"],
 };
 

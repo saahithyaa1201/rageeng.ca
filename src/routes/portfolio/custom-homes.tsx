@@ -10,7 +10,7 @@ export const Route = createFileRoute('/portfolio/custom-homes')({
 const RESIDENTIAL_PROJECTS = [
   {
     id: '115-zaph',
-    name: '115 Zaph Avenue, Scarborough',
+    name: '115 Zaph Avenue',
     client: 'Private Residence',
     scope: 'Mechanical and Electrical Engineering Design',
     status: 'Construction Completed',
@@ -20,7 +20,7 @@ const RESIDENTIAL_PROJECTS = [
       "Range Engineering Inc. provided comprehensive Mechanical Design services for a new two-storey custom residence located at 115 Zaph Avenue, Scarborough, Ontario. The project has been successfully completed and reflects Range Engineering Inc.'s commitment to delivering innovative, efficient, and code-compliant engineering solutions for high-quality custom residential developments.",
     details:
       'The engineering focus centered on optimizing heating, cooling, and plumbing layouts to integrate seamlessly within the luxury architecture while maintaining clean structural aesthetics.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: 'ramara-house',
@@ -34,11 +34,11 @@ const RESIDENTIAL_PROJECTS = [
       'Two bungalow single family dwelling in one lot, designed of traditional style with material of brick, stone and board and batten wood siding and metal ribbed roofing, showcases its simplicity bereft of complication. Truly an adaptable building design in a serene plot of land in one of the Muskoka localities.',
     details:
       "Owners' aspiration has well been served with the simple and functional design. Engineering systems were crafted to maximize efficiency and seasonal climate adaptability in a serene country property setting.",
-    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg', '/Building 1B.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg', '/Ramara V2.1.jpg', '/Ramara V2.2.jpg', '/Construction -1.jpg', '/Construction -2.jpg', '/Construction -3.jpg', '/Construction -4.jpg'],
   },
   {
     id: '11-gaydon',
-    name: '11 Gaydon Avenue, North York',
+    name: '11 Gaydon Avenue',
     client: 'Private Residence',
     scope: 'Mechanical Engineering Design',
     status: 'Construction Completed',
@@ -48,7 +48,7 @@ const RESIDENTIAL_PROJECTS = [
       'Range Engineering Inc. provided comprehensive Mechanical Engineering Design services for a luxury two-storey custom residence located at 11 Gaydon Avenue, North York, Ontario. The project was designed to deliver exceptional comfort, energy efficiency, and year-round functionality through the integration of advanced residential mechanical systems.',
     details:
       'The home features a dual heating system utilizing a high-efficiency forced-air HVAC system complemented by hydronic in-floor radiant heating. Exterior amenities include mechanical systems for the outdoor swimming pool and hydronic snow-melting systems for the main driveway.',
-    gallery: ['/Ramara V1.2.jpg', '/Building 1B.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/Gay.jpg', '/Gay1.png', '/Gay2.png', '/Gay3.png'],
   },
   {
     id: '499-rebecca',
@@ -62,7 +62,7 @@ const RESIDENTIAL_PROJECTS = [
       'Range Engineering Inc. delivered custom engineering solutions for a modern 2-storey custom home situated in Oakville, Ontario. The layout required precise coordination between architectural features and mechanical/electrical utilities.',
     details:
       'Designed for optimum thermal comfort and indoor air quality, the facility incorporates energy-efficient ventilation, quiet zonal heating, and customized residential power distribution.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/name.jpg', '/name2.jpg', '/name3.jpg'],
   },
 ];
 
@@ -88,8 +88,8 @@ function CustomHomesPage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split(',')[0].trim()}

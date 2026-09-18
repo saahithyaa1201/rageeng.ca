@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
+import { ChevronRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -81,7 +81,7 @@ export function Footer() {
           </h4>
           <ul className="mt-6 space-y-5 text-sm text-footer-foreground/80">
             <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-full border border-primary/40">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/40">
                 <Phone className="size-4 text-primary" />
               </span>
               <a href="tel:4168572414" className="font-semibold hover:text-primary">
@@ -89,18 +89,29 @@ export function Footer() {
               </a>
             </li>
             <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-full border border-primary/40">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/40">
                 <Mail className="size-4 text-primary" />
               </span>
               <a href="mailto:info@rangeeng.ca" className="font-semibold hover:text-primary">
                 info@rangeeng.ca
               </a>
             </li>
-            <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-full border border-primary/40">
+            <li className="flex items-start gap-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/40">
                 <MapPin className="size-4 text-primary" />
               </span>
-              <span className="font-semibold">Markham, Ontario</span>
+              <span className="font-semibold leading-relaxed">
+                15 Peachill Crt, Brampton,<br />Canada.
+              </span>
+            </li>
+            <li className="flex items-start gap-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/40">
+                <Clock className="size-4 text-primary" />
+              </span>
+              <span className="font-semibold leading-relaxed">
+                Mon – Fri: 8 AM – 5 PM<br />
+                <span className="text-footer-foreground/60">Sat – Sun: Closed</span>
+              </span>
             </li>
           </ul>
         </div>

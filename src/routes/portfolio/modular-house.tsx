@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/modular-house')({
 const MODULAR_PROJECTS = [
     {
         id: '83-lincoln',
-        name: '83 Lincoln Avenue Townhouse Development, St. Catharines',
+        name: '83 Lincoln Avenue Townhouse Development',
         client: 'Private Developer',
         scope: 'Mechanical & Electrical Engineering Design',
         status: 'Design Completed',
@@ -19,11 +19,11 @@ const MODULAR_PROJECTS = [
             'Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering Design services for a new modular townhouse development at 83 Lincoln Avenue, St. Catharines. The project consists of compact, efficiently planned modular residential units designed to meet contemporary living standards in an urban infill context.',
         details:
             'Engineering systems were tailored to the modular construction methodology, incorporating prefabricated MEP components and integrated energy-efficient HVAC, plumbing, and electrical systems. The design prioritizes code compliance, sustainability, and occupant comfort across all units.',
-        gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+        gallery: ['/Render_260324_1.png'],
     },
     {
         id: '129-kent',
-        name: '129 Kent Street, Campbellford',
+        name: '129 Kent Street',
         client: 'Private Developer',
         scope: 'Mechanical & Electrical Engineering Design',
         status: 'Design Completed',
@@ -33,11 +33,11 @@ const MODULAR_PROJECTS = [
             'Range Engineering Inc. delivered Mechanical and Electrical Engineering Design services for a new modular residential development located at 129 Kent Street, Campbellford. The project features compact modular living units designed for efficient assembly and long-term operational reliability.',
         details:
             'The engineering scope included full HVAC design, plumbing layout, and electrical service coordination tailored for modular assembly. Systems were optimized to reduce on-site installation time while maintaining high standards of indoor comfort and energy performance.',
-        gallery: ['/Ramara V1.1.jpg', '/Building 1B.jpg', '/Ramara V1.2.jpg'],
+        gallery: ['/Render 3.jpg'],
     },
     {
         id: '1041-willowdale',
-        name: '1041 Willowdale Avenue, North York',
+        name: '1041 Willowdale Avenue',
         client: 'Private Developer',
         scope: 'Mechanical & Electrical Engineering Design',
         status: 'Design Completed',
@@ -47,7 +47,7 @@ const MODULAR_PROJECTS = [
             'Range Engineering Inc. provided full Mechanical and Electrical Engineering Design for a modular residential development at 1041 Willowdale Avenue, North York. The project involves compact living units within a well-established urban neighbourhood, requiring careful coordination of MEP systems within modular unit constraints.',
         details:
             'Engineering highlights include high-efficiency forced-air systems, zonal electrical distribution, and plumbing layouts specifically adapted to the modular construction sequence. The design ensures all units meet Ontario Building Code standards while maximizing livable space.',
-        gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg', '/Building 1B.jpg'],
+        gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
     },
 ];
 
@@ -74,8 +74,8 @@ function ModularHousePage() {
                                 key={project.id}
                                 onClick={() => setSelectedProjectIndex(idx)}
                                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                                        ? 'bg-ink text-white shadow-md'
-                                        : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                                    ? 'bg-ink text-white shadow-md'
+                                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                                     }`}
                             >
                                 {project.name.split(',')[0].trim()}

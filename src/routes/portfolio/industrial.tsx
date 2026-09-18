@@ -21,11 +21,11 @@ const INDUSTRIAL_PROJECTS = [
             "Range Engineering Inc. is providing comprehensive mechanical and electrical engineering services for the new Technical Concrete Solutions (TCS) headquarters and manufacturing facility located at 91 Sluse Road. The development consists of a new integrated industrial and office complex designed to consolidate TCS's existing operations in Newmarket into a single, purpose-built facility. The project includes a 30,000 sq. ft. manufacturing building and a three-storey, 9,000 sq. ft. administration office (approximately 3,000 sq. ft. per floor).",
         details:
             'The administration building is designed to provide a modern and efficient workplace featuring executive and administrative offices, meeting rooms, employee amenities, lunch and break areas, washrooms, and support spaces. The industrial facility is designed to accommodate TCS\'s manufacturing operations while supporting future growth and operational efficiency.',
-        gallery: ['/Constrcution pic 1.jpg', '/Construction -3.jpg', '/Construction -4.jpg'],
+        gallery: ['/Construction -3.jpg', '/Construction -4.jpg'],
     },
     {
         id: 'fasan-drive',
-        name: '2183–2187 Fasan Drive, Oldcastle',
+        name: '2183–2187 Fasan Drive',
         client: 'Fasan Development Inc.',
         value: 'Approximately $10 Million',
         scope: 'Site Plan Approval (SPA), Mechanical and Electrical Engineering Design',
@@ -36,11 +36,11 @@ const INDUSTRIAL_PROJECTS = [
             'Range Engineering Inc. is providing comprehensive Site Plan Approval (SPA), Mechanical, and Electrical Engineering Design services for a new truck service facility and office complex located in Oldcastle, Tecumseh, Ontario. The development consists of an 8,000 sq. ft. truck service shop and a two-storey, 3,500 sq. ft. administration office.',
         details:
             "The administration building features modern office spaces, executive offices, meeting rooms, employee lunch and break areas, washrooms, and other support amenities to create an efficient and comfortable working environment. The truck service facility has been designed to accommodate heavy vehicle maintenance and servicing operations with efficient workflow, durable building systems, and reliable mechanical and electrical infrastructure.",
-        gallery: ['/Construction -3.jpg', '/Constrcution pic 1.jpg', '/Construction -4.jpg'],
+        gallery: ['/Construction -3.jpg', '/Construction -4.jpg'],
     },
     {
         id: 'jack-chute',
-        name: '15 Jack Chute Road, Killaloe',
+        name: '15 Jack Chute Road',
         client: 'AXKO Construction',
         value: 'Approximately $2 Million',
         scope: 'Mechanical and Electrical Engineering Design',
@@ -51,7 +51,7 @@ const INDUSTRIAL_PROJECTS = [
             "Range Engineering Inc. is providing comprehensive Mechanical and Electrical Engineering Design services for a new office and training facility located at 15 Jack Chute Road, Killaloe, Ontario. The project consists of a 3,600 sq. ft. pre-engineered steel building situated in a remote location without access to municipal water, sanitary sewer, or natural gas services.",
         details:
             'To address the site\'s servicing challenges, Range Engineering designed an integrated off-grid utility system, including a potable water storage and booster pump system, onsite septic system, and propane storage and distribution system. These systems were carefully coordinated to provide reliable, efficient, and code-compliant building services while meeting operational requirements.',
-        gallery: ['/Construction -4.jpg', '/Constrcution pic 1.jpg', '/Construction -3.jpg'],
+        gallery: ['/Jack1.png', '/Jack2.png', '/Jack3.png'],
     },
 ];
 

@@ -41,7 +41,7 @@ function PremiseIsolationPage() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-            {['/233 Armstrong Ave_27 - Photo.jpg', '/233 Armstrong Ave_Photo - 2.jpg', '/Site Plan.png'].map((imgSrc, i) => (
+            {['/233 Armstrong Ave_27 - Photo.jpg', '/233 Armstrong Ave_Photo - 2.jpg'].map((imgSrc, i) => (
               <div key={i} className="aspect-[4/3] bg-[#f8f8f8]">
                 <img src={imgSrc} alt="Gallery" className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
               </div>

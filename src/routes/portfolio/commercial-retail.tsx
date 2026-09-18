@@ -19,11 +19,11 @@ const COMMERCIAL_PROJECTS = [
       'Range Engineering Inc. provided Mechanical and Electrical Engineering Design services for a commercial and retail development at the intersection of Bronte Road and Charles Cornwall Road, Oakville. The mixed-use project features retail tenant spaces with flexible MEP infrastructure designed to accommodate a variety of tenants.',
     details:
       'Engineering highlights include base building HVAC with demisable tenant zones, plumbing rough-in for food service and retail tenants, electrical distribution to individual tenant panels, exterior signage power provisions, and parking lot lighting design. All systems were designed for adaptability and long-term operational efficiency.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: '3250-argentia',
-    name: '3250 Argentia Road, Mississauga',
+    name: '3250 Argentia Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -33,11 +33,11 @@ const COMMERCIAL_PROJECTS = [
       'Range Engineering Inc. delivered Mechanical and Electrical Engineering Design for a commercial and retail development at 3250 Argentia Road, Mississauga. The project consists of retail/commercial units within a multi-tenant strip development in a high-traffic commercial corridor.',
     details:
       'The MEP scope included rooftop unit HVAC selection and ductwork coordination for each tenant bay, domestic water distribution and grease trap provisions for food service bays, individual electrical metering and panel scheduling, and site lighting design. The engineering approach ensures each tenant bay is fully serviced and independently metered.',
-    gallery: ['/Ramara V1.1.jpg', '/Building 1B.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: '171-speers',
-    name: '171 Speers Road, Oakville',
+    name: '171 Speers Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -47,7 +47,7 @@ const COMMERCIAL_PROJECTS = [
       'Range Engineering Inc. provided full Mechanical and Electrical Engineering Design for a commercial and retail project at 171 Speers Road, Oakville. Located in an established commercial zone, the development delivers modern retail space with comprehensive MEP infrastructure.',
     details:
       'Engineering services included HVAC zoning for retail and back-of-house spaces, plumbing for washrooms and service areas, electrical distribution including emergency and exit lighting, and coordination with the local utility for service entrance requirements. The design supports a professional retail environment with low ongoing maintenance demands.',
-    gallery: ['/Ramara V1.2.jpg', '/Building 1B.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
   },
 ];
 

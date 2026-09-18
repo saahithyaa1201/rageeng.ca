@@ -61,12 +61,13 @@ function CareersPage() {
         eyebrow="Careers"
         title="Build systems that buildings depend on."
         description="A small team where designers see a project from first sketch to final inspection."
+        image="/career.jpg"
       />
 
       <section className="container-page grid items-center gap-14 py-20 lg:grid-cols-2 md:py-28">
         <ImageSlot
+          src="/233 Armstrong Ave_Photo - 1.jpg"
           alt="Range Engineering team at work"
-          label="Team / office photo"
           className="aspect-[4/3] rounded-2xl shadow-card"
         />
         <div>

@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/multiplex-infill')({
 const MULTIPLEX_PROJECTS = [
   {
     id: '74-amherst',
-    name: '74 Amherst Road, Toronto',
+    name: '74 Amherst Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -19,11 +19,11 @@ const MULTIPLEX_PROJECTS = [
       'Range Engineering Inc. provided Mechanical and Electrical Engineering Design for a multiplex residential infill development at 74 Amherst Road, Toronto. The project is part of a broader infill portfolio addressing housing density in established Toronto neighbourhoods.',
     details:
       'Engineering services included HVAC design per dwelling unit, plumbing stack coordination, electrical panel and service sizing, and fire safety system integration. The design was optimized to fit within the existing streetscape while delivering modern, efficient building systems.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/amherst.png'],
   },
   {
     id: '119-belgravia',
-    name: '119 Belgravia Road, Toronto',
+    name: '119 Belgravia Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -33,11 +33,11 @@ const MULTIPLEX_PROJECTS = [
       'Range Engineering Inc. delivered MEP engineering for a multiplex infill project at 119 Belgravia Road, Toronto. The development adds needed density within a low-rise residential neighbourhood through a well-coordinated, code-compliant multiplex design.',
     details:
       'The engineering scope covered individual unit heating and cooling systems, plumbing rough-in, electrical distribution, and exterior lighting. All systems were designed for long-term reliability and ease of maintenance by future property managers.',
-    gallery: ['/Ramara V1.1.jpg', '/Building 1B.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/belgravia.png'],
   },
   {
     id: '521-lansdowne',
-    name: '521 Lansdowne Avenue, Toronto',
+    name: '521 Lansdowne Avenue',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -47,11 +47,11 @@ const MULTIPLEX_PROJECTS = [
       "Range Engineering Inc. provided engineering design for a multiplex residential infill development at 521 Lansdowne Avenue, Toronto. The project contributes to the City of Toronto's \"missing middle\" housing initiatives in the Bloordale Village area.",
     details:
       'Mechanical and electrical systems were designed for multi-unit efficiency, including shared utility metering, individual suite controls, and central ventilation coordination. The design meets Toronto Green Standard requirements and applicable energy codes.',
-    gallery: ['/Ramara V1.2.jpg', '/Building 1B.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/lans.png'],
   },
   {
     id: '376-manning',
-    name: '376 Manning Avenue, Toronto',
+    name: '376 Manning Avenue',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -61,11 +61,11 @@ const MULTIPLEX_PROJECTS = [
       'Range Engineering Inc. provided Mechanical and Electrical Engineering for a multiplex infill at 376 Manning Avenue in the Trinity-Bellwoods neighbourhood of Toronto. The project delivers additional residential units within a heritage-sensitive streetscape.',
     details:
       'System design challenges included adapting modern MEP infrastructure to a constrained infill footprint. Solutions included compact air handling units, optimized plumbing configurations, and surface-mounted electrical distribution to preserve ceiling heights and architectural intent.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
   },
   {
     id: '277-cedarvale',
-    name: '277 Cedarvale Road, Toronto',
+    name: '277 Cedarvale Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -75,11 +75,11 @@ const MULTIPLEX_PROJECTS = [
       'Range Engineering Inc. delivered MEP engineering services for a multiplex residential infill development at 277 Cedarvale Road, Toronto. The development adds density to the East York neighbourhood through a carefully designed multiplex building.',
     details:
       'Engineering highlights include independent HVAC systems for each unit, domestic water supply and sanitary design, electrical panel and metering coordination, and exterior service connections. All systems comply with the Ontario Building Code and City of Toronto requirements.',
-    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg', '/Building 1B.jpg'],
+    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
   },
   {
     id: '341-morningside',
-    name: '341 Morningside Avenue, Toronto',
+    name: '341 Morningside Avenue',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -89,7 +89,7 @@ const MULTIPLEX_PROJECTS = [
       "Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering design for a multiplex infill development at 341 Morningside Avenue, Toronto (Scarborough district). The project is the sixth in Range Engineering's Toronto infill residential portfolio.",
     details:
       "The engineering scope included high-efficiency split systems for each dwelling unit, domestic hot and cold water distribution, sanitary drainage, electrical service sizing, and fire separation of mechanical and electrical systems between units. The design supports the City of Toronto's residential intensification goals.",
-    gallery: ['/Ramara V1.2.jpg', '/Building 1B.jpg', '/Ramara V1.1.jpg'],
+    gallery: ['/Ramara V1.2.jpg', '/Ramara V1.1.jpg'],
   },
 ];
 
@@ -115,8 +115,8 @@ function MultiplexInfillPage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split(',')[0]?.trim() ?? project.name}

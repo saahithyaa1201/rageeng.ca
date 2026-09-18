@@ -9,7 +9,7 @@ export const Route = createFileRoute('/portfolio/townhouse')({
 const TOWNHOUSE_PROJECTS = [
   {
     id: '2620-brock',
-    name: '2620 Brock Road, Pickering',
+    name: '2620 Brock Road',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -19,11 +19,11 @@ const TOWNHOUSE_PROJECTS = [
       'Range Engineering Inc. provided comprehensive Mechanical and Electrical Engineering Design services for a townhouse development at 2620 Brock Road, Pickering. The project features stacked and back-to-back townhouse units designed for efficient land use and high-density residential living.',
     details:
       'Engineering systems were coordinated across multiple stacked units, including shared mechanical rooms, individual suite HVAC, plumbing risers, and dedicated electrical services per unit. The design ensures clear demarcation of services between units while meeting all applicable Ontario Building Code requirements.',
-    gallery: ['/Building 1B.jpg', '/Ramara V1.1.jpg', '/Ramara V1.2.jpg'],
+    gallery: ['/br.png', '/br2.png', '/br3.png', '/br4.png'],
   },
   {
     id: '333-ritson',
-    name: '333 Ritson Road North, Oshawa',
+    name: '333 Ritson Road North',
     client: 'Private Developer',
     scope: 'Mechanical & Electrical Engineering Design',
     status: 'Design Completed',
@@ -33,7 +33,7 @@ const TOWNHOUSE_PROJECTS = [
       'Range Engineering Inc. delivered Mechanical and Electrical Engineering Design for a townhouse development at 333 Ritson Road North, Oshawa. The development consists of townhouse blocks with stacked residential planning optimized for urban growth targets in the Durham Region.',
     details:
       'The MEP scope included high-efficiency heating and cooling systems for each unit, plumbing layout and stack design, suite electrical panels, and common-area lighting and emergency systems. Coordination with the architectural and structural teams ensured seamless integration of all building systems.',
-    gallery: ['/Ramara V1.1.jpg', '/Ramara V1.2.jpg', '/Building 1B.jpg'],
+    gallery: ['/rit.jpg', '/rit2.jpg', '/rit2.png', '/rit3.png'],
   },
 ];
 
@@ -59,8 +59,8 @@ function TownhousePage() {
                 key={project.id}
                 onClick={() => setSelectedProjectIndex(idx)}
                 className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-300 rounded-md ${selectedProjectIndex === idx
-                    ? 'bg-ink text-white shadow-md'
-                    : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-gray-100 text-ink/70 hover:bg-gray-200'
                   }`}
               >
                 {project.name.split(',')[0]?.trim() ?? project.name}
